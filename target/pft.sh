@@ -16,13 +16,12 @@ PETSC_ARCH="ubuntu-opt"
 
 # Check if mpiexec is available
 MPIEXEC="$PETSC_DIR/$PETSC_ARCH/bin/mpiexec"
-
 if [ ! -x "$MPIEXEC" ]; then
   echo "Error: $MPIEXEC does not exist or is not executable."
   exit 1
 fi
 
 # Run the simulation
-"$MPIEXEC" -n "$2" "$PFT_PATH/src/pflotran/pflotran" -pflotranin "$1"
-# mpirun -n "$2" "$PFT_PATH/src/pflotran/pflotran" -pflotranin "$1"
-# "$PFT_PATH/src/pflotran/pflotran" -pflotranin "$1"
+#"$MPIEXEC" -n "$2" "$PFT_PATH/src/pflotran/pflotran" -pflotranin "$1"
+mpirun -n "$2" "$PFT_PATH/src/pflotran/pflotran" -pflotranin "$1"
+#"$PFT_PATH/src/pflotran/pflotran" -pflotranin "$1"
