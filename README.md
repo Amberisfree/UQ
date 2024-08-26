@@ -90,13 +90,13 @@ nano umbridge/hpc/hq_scripts/job.sh
 nano umbridge/hpc/hq_scripts/allocation_queue.sh
 ```
 
-## Some useful commands for Singularity
+### Some useful commands for Singularity
 ``` bash
 singularity shell --writable opengo
 PORT=[4242] singularity run --no-home --writable opengo
 ```
 
-## some useful commands for HPC
+### some useful commands for HPC
 ``` bash
 squeue -u [username]
 scancel id [jobid]
@@ -107,7 +107,7 @@ module list
 sacct -j $JOB_ID -D -o jobid,state,totalcpu,cputime,avecpu,reqcpus,ncpus,reqmem,maxvmsize,maxdiskwrite,maxdiskread,maxrss --units=G
 ```
 
-## Time One Simulation 
+### Time One Simulation 
 
 ``` bash
 
@@ -119,7 +119,7 @@ time curl http://localhost:4296/Evaluate -X POST -d '{"name":  "pflotran_simulat
 ```
 
 
-# Check job/server/client log
+### Check job/server/client log
 ``` bash
 ./hq job list --all
 ./hq job info 1
@@ -128,6 +128,8 @@ cat server.err
 cat server.out
 cat client.err
 cat client.out
+```
+
 ### Reference
 
 
