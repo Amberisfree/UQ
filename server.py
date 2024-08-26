@@ -70,7 +70,8 @@ class PFLOTRANModel(umbridge.Model):
         try:
             #result = subprocess.run([self.simulation_script, self.simulation_input, 4], capture_output=True, text=True)
             #result=os.system(self.simulation_script + " "+  self.simulation_input + " "+ "4")
-            os.system(self.simulation_script + " "+  self.simulation_input + " "+ "2")
+            #os.system(self.simulation_script + " "+  self.simulation_input + " "+ "2")
+            os.system(self.simulation_script + " "+  self.simulation_input )
 
             # if result != 0:
             #     print(result)

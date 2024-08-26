@@ -1,10 +1,12 @@
 #! /bin/bash
 
-#HQ --time-request=20s
-#HQ --time-limit=10m
-#HQ --stdout out.txt
-#HQ --stderr err.txt
-#HQ --nodes=2
+#HQ --time-request=5m
+#HQ --time-limit=5m
+#HQ --stdout ./sub-jobs/hq-job-%{JOB_ID}.out
+#HQ --stderr ./sub-jobs/hq-job-%{JOB_ID}.err
+#HQ --cpus="4"
+#HQ --resource mem="1500"
+
 # Launch model server, send back server URL
 # and wait to ensure that HQ won't schedule any more jobs to this allocation.
 module load gcc openmpi
@@ -31,11 +33,9 @@ port=$(get_avaliable_port)
 export PORT=$port
 
 # Assume that server sets the port according to the environment variable 'PORT'.
-#SINGULARITYENV_PORT=$port
-# mpirun -np 4 singularity run --no-home --writable /nobackup/mrfb78/workspace/opengo2 & # CHANGE ME!
 
-#srun --overlap --ntasks-per-node=2 --ntasks=4 --cpus-per-task=1 --nodes=$HQ_NUM_NODES --nodefile=$HQ_NODE_FILE singularity run --no-home --writable /nobackup/mrfb78/workspace/opengo2 # CHANGE ME!
-srun --overlap --ntasks-per-node=2 --ntasks=4 --cpus-per-task=2 --nodes=$HQ_NUM_NODES --nodefile=$HQ_NODE_FILE mpirun ./mpi-hello-world
+SINGULARITYENV_PORT=$port singularity run --no-home --writable /nobackup/mrfb78/workspace/opengo2 &
+
 load_balancer_dir="/nobackup/mrfb78/workspace/umbridge/hpc/" # CHANGE ME!
 
 

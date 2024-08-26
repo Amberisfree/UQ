@@ -103,9 +103,31 @@ scancel id [jobid]
 srun -p shared --pty /bin/bash
 module load gcc openmpi
 module list
+
+sacct -j $JOB_ID -D -o jobid,state,totalcpu,cputime,avecpu,reqcpus,ncpus,reqmem,maxvmsize,maxdiskwrite,maxdiskread,maxrss --units=G
+```
+
+## Time One Simulation 
+
+``` bash
+
+cd ../../ && cd nobackup/[username]/workspace
+
+PORT=4296 singularity run --no-home --writable opengo python3 app/server.py --pty bash
+
+time curl http://localhost:4296/Evaluate -X POST -d '{"name":  "pflotran_simulation" , "input": [[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]] }'
 ```
 
 
+# Check job/server/client log
+``` bash
+./hq job list --all
+./hq job info 1
+cat sub-jobs/hq-job-1.err
+cat server.err
+cat server.out
+cat client.err
+cat client.out
 ### Reference
 
 
