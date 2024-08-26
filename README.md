@@ -55,23 +55,32 @@ tar -xzf hq-v0.19.0-linux-x64.tar.gz
 
 
 ## 2. Run the UM-Bridge HPC server with HQ
-### Run the server by executing the following command of Load Balancer
-### Using MPI platform: openMPI
+
+#### Using MPI platform: openMPI
 ``` bash
 module load gcc openmpi
 ```
 ``` bash
 cd /umbridge/hpc
 ```
+#### Run the server by executing the following command of Load Balancer
+#### The Load Balancer is a python script that is used to manage the server.
+
 ``` bash
 export PATH=$(pwd):$PATH &&
 PORT=[4242] ./load-balancer
 ```
 
-### Run the client
+#### Run the client
 ``` bash
-python3 qmcpy-client.py http://localhost:[4242]
+python3 qmcpy-client.py http://localhost:[PORT]
 ```
+## 3. Sbatch Job to SLURM
+#### this step simplifies running the server by executing the following command of Load Balancer
+#### Slurm script also incorporates the client and server into one script
+``` bash
+sbatch slurm-job.sh
+``` 
 
 ## 4. Some useful commands for Debugging
 
@@ -107,19 +116,17 @@ module list
 sacct -j $JOB_ID -D -o jobid,state,totalcpu,cputime,avecpu,reqcpus,ncpus,reqmem,maxvmsize,maxdiskwrite,maxdiskread,maxrss --units=G
 ```
 
-### Time One Simulation 
+#### Time One Simulation 
 
 ``` bash
 
 cd ../../ && cd nobackup/[username]/workspace
-
 PORT=4296 singularity run --no-home --writable opengo python3 app/server.py --pty bash
-
 time curl http://localhost:4296/Evaluate -X POST -d '{"name":  "pflotran_simulation" , "input": [[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]] }'
 ```
 
 
-### Check job/server/client log
+#### Check job/server/client log
 ``` bash
 ./hq job list --all
 ./hq job info 1
@@ -130,7 +137,7 @@ cat client.err
 cat client.out
 ```
 
-### Reference
+## Reference
 
 
 #### Python QMCPy
@@ -147,6 +154,15 @@ https://docs.opengosim.com/
 
 #### Slurm and Hamilton
 https://www.durham.ac.uk/research/institutes-and-centres/advanced-research-computing/hamilton-supercomputer/usage/jobs/
+
+#### OPENMPI MPIRUN
+https://www.open-mpi.org/doc/v4.0/man1/mpirun.1.php
+
+#### Scalability Analysis
+https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis
+
+
+
 
 
 
