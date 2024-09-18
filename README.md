@@ -24,8 +24,15 @@ We collaborated closely with industry partners OpenGo Simulations to enhance the
 ### Inner Architecture
 ### Scalability Analysis
 
+![Parallization and Scale-Up](VIsualization/speedup_analysis_amdahls_law_with_ideal.png)
+* [Scalability](http://htmlpreview.github.io/?https://github.com/Amberisfree/UQ/blob/master/VIsualization/CPUs-time.html)
 
 
+![Evolution of Stochastic Process](VIsualization/Pressure_Evolution_Plot.png)
+* [Evolution](http://htmlpreview.github.io/?https://github.com/Amberisfree/UQ/blob/master/VIsualization/Evolution.html)
+
+![Tree and Lasso(VIsualization/LASSO_Coefficients_Layer_to_Time.png)
+* [Feature Importance](http://htmlpreview.github.io/?https://github.com/Amberisfree/UQ/blob/master/VIsualization/INPUT_TIME.html)
 
 
 ## 1. Install dependencies
