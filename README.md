@@ -31,7 +31,7 @@ We collaborated closely with industry partners OpenGo Simulations to enhance the
 ![Evolution of Stochastic Process](VIsualization/Pressure_Evolution_Plot.png)
 * [Evolution](http://htmlpreview.github.io/?https://github.com/Amberisfree/UQ/blob/master/VIsualization/Evolution.html)
 
-![Tree and Lasso(VIsualization/LASSO_Coefficients_Layer_to_Time.png)
+![Tree and Lasso](VIsualization/LASSO_Coefficients_Layer_to_Time.png)
 * [Feature Importance](http://htmlpreview.github.io/?https://github.com/Amberisfree/UQ/blob/master/VIsualization/INPUT_TIME.html)
 
 
