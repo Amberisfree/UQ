@@ -17,6 +17,7 @@ uncertainty on various parameters using established
 benchmarks, including probabilistic analyses of algorithms.
 We collaborated closely with industry partners OpenGo Simulations to enhance their subsurface carbon dioxide storage software.
 
+### Model Architecture
 ![UQ workflow](flowchart.png)
 
 ### Network Control
